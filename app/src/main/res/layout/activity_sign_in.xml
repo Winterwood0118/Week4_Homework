@@ -39,6 +39,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/text_id_hint"
+        android:inputType="textVisiblePassword"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_id" />
@@ -72,13 +73,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/text_login"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_join"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <Button
@@ -86,14 +88,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="120dp"
         android:text="@string/text_join"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

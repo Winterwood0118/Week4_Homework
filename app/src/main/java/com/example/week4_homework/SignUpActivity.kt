@@ -3,6 +3,7 @@ package com.example.week4_homework
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class SignUpActivity : AppCompatActivity() {
@@ -16,7 +17,11 @@ class SignUpActivity : AppCompatActivity() {
         val signUpBtn = findViewById<Button>(R.id.btn_sign_up)
 
         signUpBtn.setOnClickListener {
-            finish()
+            if (nameET.text.isEmpty() || idET.text.isEmpty() || passwordET.text.isEmpty()){
+                Toast.makeText(this,"입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
+            }else{
+                finish()
+            }
         }
     }
 }
