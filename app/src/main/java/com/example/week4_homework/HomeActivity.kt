@@ -2,6 +2,7 @@ package com.example.week4_homework
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -10,15 +11,23 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        val mainIV = findViewById<ImageView>(R.id.iv_logo)
         val idValueTV = findViewById<TextView>(R.id.tv_id_value_home)
         val nameValueTV = findViewById<TextView>(R.id.tv_name_value_home)
         val mbtiValueTV = findViewById<TextView>(R.id.tv_mbti_value_home)
         val hobbyValueTV = findViewById<TextView>(R.id.tv_hobby_value_home)
         val finishBtn = findViewById<Button>(R.id.btn_finish)
+        var randomNum = (1..5).random()
+        var imageResource = resources.getIdentifier("img_${randomNum}", "drawable", packageName)
 
-        idValueTV.text = intent.getStringExtra("EXTRA_ID")
+        idValueTV.text = intent.getStringExtra("extra_id")
+        mainIV.setImageResource(imageResource)
 
+        mainIV.setOnClickListener{
+            randomNum = (1..5).random()
+            imageResource = resources.getIdentifier("img_${randomNum}", "drawable", packageName)
+            mainIV.setImageResource(imageResource)
+        }
 
         finishBtn.setOnClickListener {
             finish()
