@@ -8,9 +8,12 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import java.lang.Math.random
 
 class SignInActivity : AppCompatActivity() {
+
+
+
+
     lateinit var startForResult: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +39,11 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(this,"아이디/비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
             }else {
                 val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("extra_id", idET.text.toString())
+                intent.apply{
+                    putExtra("extra_id", idET.text.toString())
+                    putExtra("random", imageResources.indices.random())
+                }
+
                 Toast.makeText(this,"로그인 성공", Toast.LENGTH_SHORT).show()
                 //passwordET.text.clear()
                 startActivity(intent)

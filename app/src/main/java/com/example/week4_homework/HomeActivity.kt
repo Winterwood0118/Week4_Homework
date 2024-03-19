@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class HomeActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -17,15 +18,16 @@ class HomeActivity : AppCompatActivity() {
         val mbtiValueTV = findViewById<TextView>(R.id.tv_mbti_value_home)
         val hobbyValueTV = findViewById<TextView>(R.id.tv_hobby_value_home)
         val finishBtn = findViewById<Button>(R.id.btn_finish)
-        var randomNum = (1..5).random()
-        var imageResource = resources.getIdentifier("img_${randomNum}", "drawable", packageName)
+        var randomNum = intent.getIntExtra("random", 1)
+        var imageResource = imageResources[randomNum]
 
         idValueTV.text = intent.getStringExtra("extra_id")
         mainIV.setImageResource(imageResource)
 
+        //사진 누르면 바꾸기 기능 추가해봄
         mainIV.setOnClickListener{
-            randomNum = (1..5).random()
-            imageResource = resources.getIdentifier("img_${randomNum}", "drawable", packageName)
+            randomNum = (0..4).filter { it != randomNum }.random()
+            imageResource = imageResources[randomNum]
             mainIV.setImageResource(imageResource)
         }
 
