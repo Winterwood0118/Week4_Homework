@@ -8,4 +8,9 @@
     <string name="text_name_hint">이름을 입력하세요.</string>
     <string name="text_login">로그인</string>
     <string name="text_join">회원가입</string>
+    <string name="text_finish">종료</string>
+    <string name="text_mbti">MBTI</string>
+    <string name="text_hobby">취미</string>
+
+
 </resources>

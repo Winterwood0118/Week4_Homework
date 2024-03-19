@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class SignInActivity : AppCompatActivity() {
@@ -15,11 +16,20 @@ class SignInActivity : AppCompatActivity() {
         val joinBtn = findViewById<Button>(R.id.btn_join)
         val idET = findViewById<EditText>(R.id.et_id)
         val passwordET = findViewById<EditText>(R.id.et_password)
+
         loginBtn.setOnClickListener {
-            val intent = Intent()
+            if(idET.text.isEmpty() || passwordET.text.isEmpty()){
+                Toast.makeText(this,"아이디/비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
+            }else {
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("EXTRA_ID", idET.text.toString())
+                Toast.makeText(this,"로그인 성공", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
+            }
         }
         joinBtn.setOnClickListener {
-            val intent = Intent()
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
 
     }
