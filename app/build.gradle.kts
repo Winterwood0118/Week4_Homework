@@ -9,8 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.week4_homework"
-        minSdk = 33
-        targetSdk = 34
+        minSdk = 30
         versionCode = 1
         versionName = "1.0"
 
