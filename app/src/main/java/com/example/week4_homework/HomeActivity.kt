@@ -17,6 +17,8 @@ class HomeActivity : AppCompatActivity() {
         val hobbyValueTV = findViewById<TextView>(R.id.tv_hobby_value_home)
         val finishBtn = findViewById<Button>(R.id.btn_finish)
 
+        idValueTV.text = intent.getStringExtra("EXTRA_ID")
+
 
         finishBtn.setOnClickListener {
             finish()

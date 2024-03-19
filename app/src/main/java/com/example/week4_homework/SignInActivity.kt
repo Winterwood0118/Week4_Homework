@@ -24,7 +24,7 @@ class SignInActivity : AppCompatActivity() {
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("EXTRA_ID", idET.text.toString())
                 Toast.makeText(this,"로그인 성공", Toast.LENGTH_SHORT).show()
-                passwordET.text.clear()
+                //passwordET.text.clear()
                 startActivity(intent)
             }
         }
