@@ -4,15 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class SignInActivity : AppCompatActivity() {
-
-
-
 
     lateinit var startForResult: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +22,6 @@ class SignInActivity : AppCompatActivity() {
 
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if(result.resultCode == RESULT_OK){
-                val name = result.data?.getStringExtra("signed_name")
                 val id = result.data?.getStringExtra("signed_id")
                 val password = result.data?.getStringExtra("signed_password")
                 idET.setText(id)
@@ -36,21 +31,19 @@ class SignInActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
             if(idET.text.isEmpty() || passwordET.text.isEmpty()){
-                Toast.makeText(this,"아이디/비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                toastFun(this,"아이디/비밀번호를 확인해주세요.")
             }else {
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(applicationContext, HomeActivity::class.java)
                 intent.apply{
                     putExtra("extra_id", idET.text.toString())
-                    putExtra("random", imageResources.indices.random())
+                    putExtra("random", getRandomIndex())
                 }
-
-                Toast.makeText(this,"로그인 성공", Toast.LENGTH_SHORT).show()
-                //passwordET.text.clear()
+                toastFun(this, "로그인 성공")
                 startActivity(intent)
             }
         }
         joinBtn.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
+            val intent = Intent(applicationContext, SignUpActivity::class.java)
             startForResult.launch(intent)
         }
 
