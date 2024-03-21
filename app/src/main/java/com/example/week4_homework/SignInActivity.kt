@@ -33,7 +33,7 @@ class SignInActivity : AppCompatActivity() {
             if(idET.text.isEmpty() || passwordET.text.isEmpty()){
                 toastFun(this,"아이디/비밀번호를 확인해주세요.")
             }else {
-                val intent = Intent(applicationContext, HomeActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 intent.apply{
                     putExtra("extra_id", idET.text.toString())
                     putExtra("random", getRandomIndex())
@@ -43,7 +43,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
         joinBtn.setOnClickListener {
-            val intent = Intent(applicationContext, SignUpActivity::class.java)
+            val intent = Intent(this, SignUpActivity::class.java)
             startForResult.launch(intent)
         }
 
