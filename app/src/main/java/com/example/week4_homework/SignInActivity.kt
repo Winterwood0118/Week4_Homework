@@ -9,11 +9,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class SignInActivity : AppCompatActivity() {
+
     private lateinit var loginBtn: Button
     private lateinit var joinBtn: Button
     private lateinit var idET: EditText
     private lateinit var passwordET: EditText
     private lateinit var startForResult: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
@@ -23,15 +25,14 @@ class SignInActivity : AppCompatActivity() {
         idET = findViewById(R.id.et_id)
         passwordET = findViewById(R.id.et_password)
 
-        startForResult =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == RESULT_OK) {
-                    val id = result.data?.getStringExtra("signed_id")
-                    val password = result.data?.getStringExtra("signed_password")
-                    idET.setText(id)
-                    passwordET.setText(password)
-                }
+        startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val id = result.data?.getStringExtra("signed_id")
+                val password = result.data?.getStringExtra("signed_password")
+                idET.setText(id)
+                passwordET.setText(password)
             }
+        }
 
         loginBtn.setOnClickListener { loginBtnClickListener() }
         joinBtn.setOnClickListener { joinBtnClickListener() }
