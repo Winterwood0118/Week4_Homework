@@ -30,16 +30,16 @@ class SignInActivity : AppCompatActivity() {
 
         init()
 
-        loginBtn.setOnClickListener { loginBtnClickListener() }
-        joinBtn.setOnClickListener { joinBtnClickListener() }
+        loginBtn.setOnClickListener { loginBtnOnClick() }
+        joinBtn.setOnClickListener { joinBtnOnClick() }
     }
 
-    private fun joinBtnClickListener() {
+    private fun joinBtnOnClick() {
         val intent = Intent(this, SignUpActivity::class.java)
         startForResult.launch(intent)
     }
 
-    private fun loginBtnClickListener() {
+    private fun loginBtnOnClick() {
         if (idET.text.isEmpty() || passwordET.text.isEmpty()) {
             toastFun(this, "아이디/비밀번호를 확인해주세요.")
         } else {
