@@ -8,18 +8,23 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 
 class SignUpActivity : AppCompatActivity() {
-    private lateinit var nameET: EditText
-    private lateinit var idET: EditText
-    private lateinit var passwordET: EditText
-    private lateinit var signUpBtn: Button
+
+    private val nameET: EditText by lazy {
+        findViewById(R.id.et_name_sign_up)
+    }
+    private val idET: EditText by lazy {
+        findViewById(R.id.et_id_sign_up)
+    }
+    private val passwordET: EditText by lazy {
+        findViewById(R.id.et_password_sign_up)
+    }
+    private val signUpBtn: Button by lazy {
+        findViewById(R.id.btn_sign_up)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-
-        nameET = findViewById(R.id.et_name_sign_up)
-        idET = findViewById(R.id.et_id_sign_up)
-        passwordET = findViewById(R.id.et_password_sign_up)
-        signUpBtn = findViewById(R.id.btn_sign_up)
 
         signUpBtn.setOnClickListener { signUpClickListener() }
     }
