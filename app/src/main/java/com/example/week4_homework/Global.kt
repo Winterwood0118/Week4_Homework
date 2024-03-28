@@ -8,7 +8,7 @@ val imageResources = arrayOf(
 )
 
 fun getRandomIndex(): Int {
-    return (imageResources.indices).random()
+    return imageResources.indices.random()
 }
 
 fun toastFun(context: Context, toast: String) {

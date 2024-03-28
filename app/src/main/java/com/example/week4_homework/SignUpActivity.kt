@@ -33,7 +33,6 @@ class SignUpActivity : AppCompatActivity() {
         if (nameET.text.isEmpty() || idET.text.isEmpty() || passwordET.text.isEmpty()) {
             toastFun(applicationContext, "입력되지 않은 정보가 있습니다.")
         } else {
-            //데이터 저장 추가한다면 여기에 작성
             val intent = Intent().apply {
                 putExtra("signed_id", idET.text.toString())
                 putExtra("signed_password", passwordET.text.toString())
