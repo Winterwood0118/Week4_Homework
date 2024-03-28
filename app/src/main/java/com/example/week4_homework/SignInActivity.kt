@@ -10,20 +10,23 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SignInActivity : AppCompatActivity() {
 
-    private lateinit var loginBtn: Button
-    private lateinit var joinBtn: Button
-    private lateinit var idET: EditText
-    private lateinit var passwordET: EditText
+    private val loginBtn: Button by lazy{
+        findViewById(R.id.btn_login)
+    }
+    private val joinBtn: Button by lazy{
+        findViewById(R.id.btn_join)
+    }
+    private val idET: EditText by lazy {
+        findViewById(R.id.et_id)
+    }
+    private val passwordET: EditText by lazy {
+        findViewById(R.id.et_password)
+    }
     private lateinit var startForResult: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-
-        loginBtn = findViewById(R.id.btn_login)
-        joinBtn = findViewById(R.id.btn_join)
-        idET = findViewById(R.id.et_id)
-        passwordET = findViewById(R.id.et_password)
 
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
