@@ -28,14 +28,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val id = result.data?.getStringExtra("signed_id")
-                val password = result.data?.getStringExtra("signed_password")
-                idET.setText(id)
-                passwordET.setText(password)
-            }
-        }
+        init()
 
         loginBtn.setOnClickListener { loginBtnClickListener() }
         joinBtn.setOnClickListener { joinBtnClickListener() }
@@ -57,6 +50,17 @@ class SignInActivity : AppCompatActivity() {
             }
             toastFun(this, "로그인 성공")
             startActivity(intent)
+        }
+    }
+
+    private fun init(){
+        startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val id = result.data?.getStringExtra("signed_id")
+                val password = result.data?.getStringExtra("signed_password")
+                idET.setText(id)
+                passwordET.setText(password)
+            }
         }
     }
 }

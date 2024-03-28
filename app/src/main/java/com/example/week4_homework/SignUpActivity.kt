@@ -26,10 +26,10 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        signUpBtn.setOnClickListener { signUpClickListener() }
+        signUpBtn.setOnClickListener { signUpOnClick() }
     }
 
-    private fun signUpClickListener() {
+    private fun signUpOnClick() {
         if (nameET.text.isEmpty() || idET.text.isEmpty() || passwordET.text.isEmpty()) {
             toastFun(applicationContext, "입력되지 않은 정보가 있습니다.")
         } else {

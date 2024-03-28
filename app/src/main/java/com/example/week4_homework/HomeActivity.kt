@@ -8,33 +8,45 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class HomeActivity : AppCompatActivity() {
+    private val mainIV: ImageView by lazy {
+        findViewById(R.id.iv_logo)
+    }
+    private val idValueTV: TextView by lazy {
+        findViewById(R.id.tv_id_value_home)
+    }
+    private val finishBtn: Button by lazy {
+        findViewById(R.id.btn_finish)
+    }
+    private var randomNum = 0
+    private var imageResource = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-/*        val nameValueTV = findViewById<TextView>(R.id.tv_name_value_home)
-        val mbtiValueTV = findViewById<TextView>(R.id.tv_mbti_value_home)
-        val hobbyValueTV = findViewById<TextView>(R.id.tv_hobby_value_home)*/
-        val mainIV = findViewById<ImageView>(R.id.iv_logo)
-        val idValueTV = findViewById<TextView>(R.id.tv_id_value_home)
-        val finishBtn = findViewById<Button>(R.id.btn_finish)
-        var randomNum = intent.getIntExtra("random", 1)
-        var imageResource = imageResources[randomNum]
 
-        idValueTV.text = intent.getStringExtra("extra_id")
-        mainIV.setImageResource(imageResource)
+        init()
 
-        //사진 누르면 바꾸기 기능 추가해봄
-        mainIV.setOnClickListener{
+        mainIV.setOnClickListener { mainImageOnClick() }
+        finishBtn.setOnClickListener { finishOnClick() }
+    }
+
+    private fun finishOnClick() {
+        finish()
+    }
+
+    private fun mainImageOnClick() {
+        mainIV.setOnClickListener {
             randomNum = getRandomIndex()
             imageResource = imageResources[randomNum]
             mainIV.setImageResource(imageResource)
         }
-
-        finishBtn.setOnClickListener {
-            finish()
-        }
-
-
     }
+
+    private fun init() {
+        randomNum = intent.getIntExtra("random", 1)
+        imageResource = imageResources[randomNum]
+        idValueTV.text = intent.getStringExtra("extra_id")
+        mainIV.setImageResource(imageResource)
+    }
+
 }
